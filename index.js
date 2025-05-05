@@ -43,13 +43,12 @@ app.post("/submit", (req, res) => {
 });
 
 app.post("/about", (req, res) => {
-    res.render(__dirname + "/about/testabout", { username: name })
-})
+    res.render(path.join(__dirname, "about/testabout"), { username: name });
+});
 
 app.post("/contact", (req, res) => {
-    res.render(__dirname + "/contact/contact", { username: name })
-})
-
+    res.render(path.join(__dirname, "contact/contact"), { username: name });
+});
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
