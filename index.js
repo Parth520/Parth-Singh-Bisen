@@ -35,7 +35,7 @@ function names(req, res, next) {
 app.use(names);
 
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/box/box.html");
+    res.sendFile(path.join(__dirname, "box", "box.html"));
 });
 
 app.post("/submit", (req, res) => {
