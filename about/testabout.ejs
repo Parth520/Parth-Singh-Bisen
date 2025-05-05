@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parth Singh Bisen - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        /* Base styles */
+        
+        body {
+            background: linear-gradient(to bottom, #000000, #393E46);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            perspective: 1000px;
+            margin: 0;
+            padding: 0;
+        }
+        /* Navbar styles */
+        
+        .navbar {
+            background: linear-gradient(to right, #000000, #B6FFFA);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        .navbar h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            background: linear-gradient(to right, #00feba, #5b5b5b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }
+        /* Hero section */
+        
+        .hero-content {
+            text-align: center;
+            padding: 120px 20px 60px;
+            background: rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(160deg, #000000, #213448);
+            z-index: -1;
+        }
+        
+        .hero-content h1 {
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            z-index: 2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .creative {
+            color: #B6FFFA;
+            text-shadow: 0 0 10px #B6FFFA;
+            animation: slideInUp 2s ease-out;
+            position: relative;
+            z-index: 2;
+            font-size: clamp(0.9rem, 3vw, 1.25rem);
+            line-height: 1.6;
+        }
+        
+        .text-3d {
+            text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
+        }
+        
+        .floating-chars span {
+            display: inline-block;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+        /* Divider */
+        
+        .light {
+            height: 3px;
+            background: linear-gradient(to right, #B6FFFA, #ffffff, #B6FFFA);
+            animation: pulse 3s infinite;
+            margin: 30px 0;
+            width: 80%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        /* Containers */
+        
+        .container {
+            animation: fadeIn 3s ease-in-out;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        /* Card styles */
+        
+        .card-cover {
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            min-height: 300px;
+        }
+        
+        .card-cover:hover {
+            transform: translateZ(20px) rotateX(5deg) rotateY(5deg);
+            box-shadow: 0 15px 30px rgba(182, 255, 250, 0.5), 0 0 20px rgba(182, 255, 250, 0.3);
+        }
+        
+        .card-cover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(182, 255, 250, 0.2) 0%, rgba(0, 0, 0, 0) 50%);
+            pointer-events: none;
+        }
+        /* Background video */
+        
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        /* Animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOutDown {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.6;
+            }
+        }
+        /* 3D Showroom Effects */
+        
+        .showroom-item {
+            opacity: 0;
+            transform-style: preserve-3d;
+            transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+            will-change: transform, opacity;
+        }
+        
+        .from-left {
+            transform: perspective(1200px) translateX(-100px) rotateY(20deg) translateZ(-100px);
+        }
+        
+        .from-right {
+            transform: perspective(1200px) translateX(100px) rotateY(-20deg) translateZ(-100px);
+        }
+        
+        .from-top {
+            transform: perspective(1200px) translateY(-100px) rotateX(20deg) translateZ(-100px);
+        }
+        
+        .from-bottom {
+            transform: perspective(1200px) translateY(100px) rotateX(-20deg) translateZ(-100px);
+        }
+        
+        .rotate-in {
+            transform: perspective(1200px) rotateY(90deg) translateZ(-150px);
+        }
+        
+        .scale-up {
+            transform: perspective(1200px) scale(0.7) translateZ(-100px);
+        }
+        
+        .showroom-item.visible {
+            opacity: 1;
+            transform: perspective(1200px) translateX(0) rotateY(0) translateZ(0) rotateX(0) scale(1);
+        }
+        /* Exit animations */
+        
+        .showroom-item.exit-to-left {
+            opacity: 0;
+            transform: perspective(1200px) translateX(-100px) rotateY(20deg) translateZ(-100px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .showroom-item.exit-to-right {
+            opacity: 0;
+            transform: perspective(1200px) translateX(100px) rotateY(-20deg) translateZ(-100px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .showroom-item.exit-to-top {
+            opacity: 0;
+            transform: perspective(1200px) translateY(-100px) rotateX(20deg) translateZ(-100px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .showroom-item.exit-to-bottom {
+            opacity: 0;
+            transform: perspective(1200px) translateY(100px) rotateX(-20deg) translateZ(-100px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        .showroom-item.scale-down {
+            opacity: 0;
+            transform: perspective(1200px) scale(0.7) translateZ(-100px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        /* Floating animations */
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes floatText {
+            0% {
+                transform: translateY(0px) rotate(-1deg);
+                text-shadow: 0 5px 15px rgba(182, 255, 250, 0.3);
+            }
+            25% {
+                transform: translateY(-3px) rotate(0deg);
+                text-shadow: 0 10px 15px rgba(182, 255, 250, 0.5);
+            }
+            50% {
+                transform: translateY(-5px) rotate(1deg);
+                text-shadow: 0 15px 20px rgba(182, 255, 250, 0.7);
+            }
+            75% {
+                transform: translateY(-3px) rotate(0deg);
+                text-shadow: 0 10px 15px rgba(182, 255, 250, 0.5);
+            }
+            100% {
+                transform: translateY(0px) rotate(-1deg);
+                text-shadow: 0 5px 15px rgba(182, 255, 250, 0.3);
+            }
+        }
+        
+        @keyframes colorCycle {
+            0% {
+                color: #B6FFFA;
+                text-shadow: 0 0 10px rgba(182, 255, 250, 0.5);
+            }
+            25% {
+                color: #9ee7f5;
+                text-shadow: 0 0 15px rgba(158, 231, 245, 0.5);
+            }
+            50% {
+                color: #88d4f2;
+                text-shadow: 0 0 20px rgba(136, 212, 242, 0.5);
+            }
+            75% {
+                color: #9ee7f5;
+                text-shadow: 0 0 15px rgba(158, 231, 245, 0.5);
+            }
+            100% {
+                color: #B6FFFA;
+                text-shadow: 0 0 10px rgba(182, 255, 250, 0.5);
+            }
+        }
+        
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .float-text {
+            animation: floatText 6s ease-in-out infinite;
+            transform-origin: center;
+            display: inline-block;
+        }
+        
+        .color-cycle {
+            animation: colorCycle 8s ease-in-out infinite;
+        }
+        /* 3D Card Tilt Effect */
+        
+        .tilt-card {
+            transform-style: preserve-3d;
+            transform: perspective(1000px);
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            height: 100%;
+        }
+        
+        .tilt-card-inner {
+            transform-style: preserve-3d;
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tilt-card:hover .tilt-card-inner {
+            transform: translateZ(30px);
+        }
+        
+        .tilt-card-shine {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.1) 15%, rgba(255, 255, 255, 0) 30%);
+            border-radius: 4px;
+            opacity: 0;
+            transition: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 100;
+            pointer-events: none;
+        }
+        
+        .tilt-card:hover .tilt-card-shine {
+            opacity: 1;
+        }
+        
+        .container1 {
+            background-color: black;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        /* Footer */
+        
+        footer {
+            background-color: rgba(0, 0, 0, 0);
+            color: #B6FFFA;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid #2c2c2c;
+            margin-top: 50px;
+        }
+        /* Floating labels */
+        
+        .floating-label {
+            position: absolute;
+            color: #B6FFFA;
+            font-size: 0.8rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 3px 8px;
+            border-radius: 4px;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            bottom: 10px;
+            right: 10px;
+        }
+        
+        .showroom-item.visible:hover .floating-label {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        /* Media Queries for Responsive Design */
+        
+        @media (max-width: 1200px) {
+            .hero-content {
+                padding: 100px 15px 50px;
+            }
+            .hero-content h1 {
+                margin-bottom: 1rem;
+            }
+            .card-cover {
+                min-height: 250px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 0.75rem 1.5rem;
+            }
+            .navbar h1 {
+                font-size: 1.5rem;
+            }
+            .tilt-card:hover .tilt-card-inner {
+                transform: translateZ(15px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 90px 10px 40px;
+            }
+            .hero-content h1 {
+                margin-bottom: 0.75rem;
+            }
+            .text-3d {
+                text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25);
+            }
+            .light {
+                margin: 20px auto;
+            }
+            /* Reduce animation intensity for better mobile performance */
+            .from-left,
+            .exit-to-left {
+                transform: perspective(800px) translateX(-50px) rotateY(10deg) translateZ(-50px);
+            }
+            .from-right,
+            .exit-to-right {
+                transform: perspective(800px) translateX(50px) rotateY(-10deg) translateZ(-50px);
+            }
+            .from-top,
+            .exit-to-top {
+                transform: perspective(800px) translateY(-50px) rotateX(10deg) translateZ(-50px);
+            }
+            .from-bottom,
+            .exit-to-bottom {
+                transform: perspective(800px) translateY(50px) rotateX(-10deg) translateZ(-50px);
+            }
+            .rotate-in {
+                transform: perspective(800px) rotateY(45deg) translateZ(-75)
+            }
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+            padding: 2rem 0;
+        }
+        /* Line in the middle */
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #0dcaf0;
+            transform: translateX(-50%);
+        }
+        /* Timeline event block */
+        
+        .timeline-event {
+            position: relative;
+            width: 50%;
+            padding: 1rem 2rem;
+            box-sizing: border-box;
+        }
+        
+        .timeline-event:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-event:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+        /* Event date styling */
+        
+        .timeline-date {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #0dcaf0;
+            margin-bottom: 0.5rem;
+        }
+        /* Content box */
+        
+        .timeline-content {
+            background: #000;
+            padding: 1rem;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 4px 8px rgb(36, 255, 237);
+        }
+        
+        p {
+            color: #0dcaf0
+        }
+        /* Dot */
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #0dcaf0;
+            box-shadow: 0 0 0 4px #f0f4f8;
+        }
+        
+        a {
+            color: #0dcaf0;
+        }
+        
+        .timeline-event:nth-child(odd) .timeline-content::before {
+            right: -8px;
+        }
+        
+        .timeline-event:nth-child(even) .timeline-content::before {
+            left: -8px;
+        }
+        /* Responsive */
+        
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 8px;
+            }
+            .timeline-event {
+                width: 100%;
+                left: 0 !important;
+                text-align: left;
+                padding-left: 2rem;
+                padding-right: 1rem;
+            }
+            .timeline-content::before {
+                left: -8px;
+            }
+        }
+        
+        .timeline-event.hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .timeline-event.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .custom-btn {
+            background-color: #0dcaf0;
+            color: white;
+            font-weight: 500;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-btn:hover {
+            background-color: #0bb5d6;
+            color: white;
+        }
+        
+        .offcanvas-end {
+            background-image: radial-gradient( black, #27548A);
+        }
+        
+        .offcanvas-title {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar fixed-top shadow-sm custom-navbar">
+        <div class="container-fluid">
+            <h1 class="navbar-brand mb-0 fw-bold">Parth Singh Bisen</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end custom-offcanvas" tabindex="-1" id="offcanvasNavbar">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title fw-semibold">📋 Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div class="offcanvas-body d-flex flex-column gap-3">
+                    <form action="/submit" method="POST">
+                        <button type="submit" class="btn custom-btn w-100">🏠 Home</button>
+                    </form>
+                    <form action="/contact" method="POST">
+                        <button type="submit" class="btn custom-btn w-100">👤 Contact me</button>
+                    </form>
+                    <a href="/Parth Singh Bisen.pdf" class="btn custom-btn w-100" download>📄 Resume</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <video autoplay muted loop>
+        <source src="/3d8424ea47a4ac5f05806157654ba981.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-content showroom-item from-top" data-exit="exit-to-top">
+        <h1 class="text-3d floating-chars">I get it, You want to know all about me</h1>
+        <div class="col-lg-8 mx-auto">
+            <p class="fs-5 mb-4 creative">Hi, I'm <span class="float-text color-cycle">Parth Singh Bisen</span>, a recent Computer Science and Engineering graduate with a keen interest in the dynamic world of digital solutions. My academic background from <span class="float-text">Vellore Institute of Technology Bhopal</span>                has provided me with a solid understanding of front-end development, web technologies, and computer networks. I'm also enthusiastic about <span class="float-text color-cycle">animation and VFX</span>, and I'm always exploring emerging
+                technologies. My experience includes designing user-friendly interfaces with Bootstrap and developing basic back-ends using JavaScript. With certifications in data analysis and a proven ability to quickly learn, I'm excited to apply my
+                skills and creativity to meaningful projects.</p>
+        </div>
+    </div>
+
+    <div class="light showroom-item scale-up" data-exit="scale-down"></div>
+
+    <div class="container px-4 py-5" id="custom-cards">
+        <h2 class="pb-2 border-bottom showroom-item from-left text-3d float-text" data-exit="exit-to-left">Check Out my Certificates ,
+            <%=username%>
+        </h2>
+        <div class="row row-cols-1 row-cols-lg-3 g-4 py-5">
+            <!-- Project cards with 3D effects -->
+            <div class="col showroom-item from-left" data-exit="exit-to-left">
+                <div class="card card-cover h-100 text-bg-dark rounded-4 tilt-card" style="background-image: url('/neon-certificate-red-color-vector-illustration-flat-style-image-neon-certificate-red-color-vector-illustration-flat-style-light-230054234.webp');">
+                    <div class="tilt-card-shine"></div>
+                    <div class="d-flex flex-column h-100 p-5 pb-3 tilt-card-inner">
+                        <a href="/429c4b27-3067-4ffa-b054-373bed7e93ff.pdf">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 fw-bold">Introduction to Python</h3>
+                        </a>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">Sololearn</li>
+                            <li class="d-flex align-items-center me-3"><small></small></li>
+                            <li class="d-flex align-items-center"><small></small></li>
+                        </ul>
+                    </div>
+                    <div class="floating-label">Click to view certificate</div>
+                </div>
+            </div>
+
+            <div class="col showroom-item from-bottom" data-exit="exit-to-bottom">
+                <div class="card card-cover h-100 text-bg-dark rounded-4 tilt-card" style="background-image: url('/neon-certificate-red-color-vector-illustration-flat-style-image-neon-certificate-red-color-vector-illustration-flat-style-light-230054234.webp');">
+                    <div class="tilt-card-shine"></div>
+                    <div class="d-flex flex-column h-100 p-5 pb-3 tilt-card-inner">
+                        <a href="/429c4b27-3067-4ffa-b054-373bed7e93ff.pdf">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 fw-bold">Bits and Bytes of Computer Networks</h3>
+                        </a>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">Google</li>
+                            <li class="d-flex align-items-center me-3"><small></small></li>
+                            <li class="d-flex align-items-center"><small></small></li>
+                        </ul>
+                    </div>
+                    <div class="floating-label">Click to view certificate</div>
+                </div>
+            </div>
+
+            <div class="col showroom-item from-right" data-exit="exit-to-right">
+                <div class="card card-cover h-100 text-bg-dark rounded-4 tilt-card" style="background-image: url('/neon-certificate-red-color-vector-illustration-flat-style-image-neon-certificate-red-color-vector-illustration-flat-style-light-230054234.webp');">
+                    <div class="tilt-card-shine"></div>
+                    <div class="d-flex flex-column h-100 p-5 pb-3 tilt-card-inner">
+                        <a href="/eeba0c92-4c71-4ff3-bcf7-2536833077c9.pdf">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 fw-bold"> Game Development with JS</h3>
+                        </a>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">Sololearn</li>
+                            <li class="d-flex align-items-center me-3"><small></small></li>
+                            <li class="d-flex align-items-center"><small></small></li>
+                        </ul>
+                    </div>
+                    <div class="floating-label">Click to view certificate</div>
+                </div>
+            </div>
+            <div class="col showroom-item from-right" data-exit="exit-to-right">
+                <div class="card card-cover h-100 text-bg-dark rounded-4 tilt-card" style="background-image: url('/neon-certificate-red-color-vector-illustration-flat-style-image-neon-certificate-red-color-vector-illustration-flat-style-light-230054234.webp');">
+                    <div class="tilt-card-shine"></div>
+                    <div class="d-flex flex-column h-100 p-5 pb-3 tilt-card-inner">
+                        <a href="/UC-1f6b3114-8152-4459-b514-6d0584501268.pdf">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 fw-bold"> Associate MLA-C01</h3>
+                        </a>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">Udemy</li>
+                            <li class="d-flex align-items-center me-3"><small></small></li>
+                            <li class="d-flex align-items-center"><small></small></li>
+                        </ul>
+                    </div>
+                    <div class="floating-label">Click to view certificate</div>
+                </div>
+            </div>
+            <div class="col showroom-item from-right" data-exit="exit-to-right">
+                <div class="card card-cover h-100 text-bg-dark rounded-4 tilt-card" style="background-image: url('/neon-certificate-red-color-vector-illustration-flat-style-image-neon-certificate-red-color-vector-illustration-flat-style-light-230054234.webp');">
+                    <div class="tilt-card-shine"></div>
+                    <div class="d-flex flex-column h-100 p-5 pb-3 tilt-card-inner">
+                        <a href="/UC-e32ef1b4-6312-4d8b-bef3-1be25ea86508.pdf">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 fw-bold"> Blender For VFX</h3>
+                        </a>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">Udemy</li>
+                            <li class="d-flex align-items-center me-3"><small></small></li>
+                            <li class="d-flex align-items-center"><small></small></li>
+                        </ul>
+                    </div>
+                    <div class="floating-label">Click to view certificate</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container1 px-4 py-5 " id="icon-grid">
+
+        <h2 class="pb-2 border-bottom text-3d float-text">Hey
+            <%= username %> This is my journey</h2>
+        <div class="timeline">
+            <div class="timeline-event">
+                <div class="timeline-date">2019</div>
+                <div class="timeline-content">
+                    <h3>TATA DAV Public School, Sonadih - Class X</h3>
+                    <p>Successfully completed secondary education (Class X) at TATA DAV Public School, Sonadih, achieving 75%</p>
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">2021</div>
+                <div class="timeline-content">
+                    <h3>Sardana Internaional School, Dewas - ClassXII</h3>
+                    <p>Awarded the Class XII certification from Sardana International School, with a final score of 85%.</p>
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">2021</div>
+                <div class="timeline-content">
+                    <h3>VIT Bhopal - B.Tech (CSE) Admission</h3>
+                    <p>Secured admission to VIT Bhopal for the Bachelor of Technology (B.Tech) program in Computer Science and Engineering, having successfully cleared the VIT Engineering Entrance Examination (VITEEE).</p>
+                </div>
+            </div>
+
+            <div class="timeline-event">
+                <div class="timeline-date">2024</div>
+                <div class="timeline-content">
+                    <h3>Early roles: 3D Animator & Frontend Developer.</h3>
+                    <p>I began exploring my interests through self-initiated projects in 3D Animation and Frontend Development.</p>
+                </div>
+            </div>
+            <div class="timeline-event">
+                <div class="timeline-date">2025</div>
+                <div class="timeline-content">
+                    <h3>Building the Future as a full stack developer</h3>
+                    <p>I am focused on building impactful digital experiences as I progress in my path to becoming a full stack developer.</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="showroom-item from-bottom" data-exit="exit-to-bottom">
+        <p>&copy; 2025 Parth Singh Bisen. All rights reserved.</p>
+        <p>Made with ❤️</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <!-- 3D Showroom Animation Script with Exit Animations -->
+    <script>
+        // Improved Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '-10% 0px -10% 0px', // Trigger a bit earlier when scrolling in and out
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const element = entry.target;
+                const exitClass = element.getAttribute('data-exit');
+
+                if (entry.isIntersecting) {
+                    // Element is entering the viewport
+                    element.classList.add('visible');
+
+                    // Remove any exit classes if present
+                    if (exitClass) {
+                        element.classList.remove(exitClass);
+                    }
+
+                    // Add floating animation to cards after they become visible
+                    if (element.querySelector('.card-cover')) {
+                        setTimeout(() => {
+                            const cardCover = element.querySelector('.card-cover');
+                            if (cardCover) {
+                                cardCover.classList.add('float-animation');
+                            }
+                        }, 1000);
+                    }
+                } else if (element.classList.contains('visible')) {
+                    // Element was visible but is now leaving the viewport
+                    element.classList.remove('visible');
+
+                    // Add exit animation class if defined
+                    if (exitClass) {
+                        element.classList.add(exitClass);
+                    }
+
+                    // Remove floating animation from cards
+                    if (element.querySelector('.card-cover')) {
+                        const cardCover = element.querySelector('.card-cover');
+                        if (cardCover) {
+                            cardCover.classList.remove('float-animation');
+                        }
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all showroom items
+        document.querySelectorAll('.showroom-item').forEach(el => observer.observe(el));
+
+        // 3D Card Tilt Effect
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -10;
+                const rotateY = ((x - centerX) / centerX) * 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+                // Move the shine effect based on cursor position
+                const shine = card.querySelector('.tilt-card-shine');
+                shine.style.backgroundPosition = `${x / rect.width * 100}% ${y / rect.height * 100}%`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+
+        // Randomize the animation delay for staggered appearance
+        document.querySelectorAll('.showroom-item').forEach(item => {
+            const delay = Math.random() * 0.5;
+            item.style.transitionDelay = `${delay}s`;
+        });
+
+        // Create floating character effect for h1 with floating-chars class
+        document.querySelectorAll('.floating-chars').forEach(heading => {
+            const text = heading.textContent;
+            heading.textContent = '';
+
+            // Split text into individual characters and wrap each in a span
+            for (let i = 0; i < text.length; i++) {
+                const span = document.createElement('span');
+                span.textContent = text[i] === ' ' ? '\u00A0' : text[i]; // Use non-breaking space for spaces
+
+                // Add random animation delays and durations for each character
+                const animDelay = Math.random() * 5;
+                const animDuration = 3 + Math.random() * 4;
+
+                span.style.animation = `floatText ${animDuration}s ease-in-out ${animDelay}s infinite`;
+                span.style.display = 'inline-block';
+
+                heading.appendChild(span);
+            }
+        });
+
+        // Mouse parallax effect for floating text
+        const parallaxElements = document.querySelectorAll('.float-text');
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            parallaxElements.forEach(element => {
+                const depth = 20;
+                const moveX = (x - 0.5) * depth;
+                const moveY = (y - 0.5) * depth;
+
+                element.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) rotate(${moveX * 0.1}deg)`;
+            });
+        });
+        const events = document.querySelectorAll(".timeline-event");
+
+        const observe = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        events.forEach(event => {
+            event.classList.add("hidden");
+            observe.observe(event);
+        });
+    </script>
+</body>
+
+</html>
