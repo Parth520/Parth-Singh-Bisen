@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <style>
-        /* Include the CSS from the previous sections here */
-        
         body {
             margin: 0;
             height: 100vh;
@@ -19,34 +17,37 @@
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
         }
-        
+
         @keyframes gradientBG {
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
         }
-        
+
         .overlay {
             background: linear-gradient(160deg, #000000, #213448);
             backdrop-filter: blur(10px);
             border-radius: 15px;
             padding: 2rem;
-            height: 700px;
-            max-width: 1000px;
-            margin: 200px auto;
+            max-width: 90%;
+            margin: 100px auto;
             text-align: center;
             color: #fff;
         }
-        
-        .form-control {
-            margin-left: 275px;
-            width: 400px;
+
+        .form-control,
+        .form-control1 {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
             height: 50px;
             border: none;
             outline: none;
@@ -55,80 +56,58 @@
             color: purple;
             border-radius: 20px;
         }
-        
+
         .form-control1 {
-            width: 400px;
             height: 150px;
-            border: none;
-            outline: none;
             padding-top: 20px;
-            padding-left: 25px;
-            font-weight: 500;
-            color: purple;
-            border-radius: 20px;
         }
-        
+
         .typewriter {
             overflow: hidden;
-            /* Ensures the content is hidden initially */
             border-right: 0.15em solid orange;
-            /* Creates the cursor effect */
             white-space: nowrap;
-            /* Keeps the text on a single line */
             margin: 0 auto;
             letter-spacing: 0.15em;
             animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
         }
-        /* Typing animation */
-        
+
         @keyframes typing {
             from {
                 width: 0
             }
+
             to {
                 width: 100%
             }
         }
-        /* Blinking cursor animation */
-        
+
         @keyframes blink-caret {
             from,
             to {
                 border-color: transparent
             }
+
             50% {
                 border-color: orange;
             }
         }
-        
+
         .navbar {
             background: linear-gradient(to right, #000000, #B6FFFA);
             padding: 1rem 2rem;
             z-index: 1000;
             animation: gradientBG 15s ease infinite;
         }
-        
-        @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-        
+
         .navbar h1 {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
             font-weight: 600;
             background: linear-gradient(to right, #00feba, #5b5b5b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin: 0;
         }
-        
+
         video {
             position: fixed;
             top: 0;
@@ -138,30 +117,19 @@
             object-fit: cover;
             z-index: -2;
         }
-        /* Navbar with soft color and subtle shadow */
-        
+
         .custom-navbar {
             background: linear-gradient(to right, black, #0798ff);
-            /* Soft pastel gradient */
             padding: 0.75rem 1.25rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        /* Brand title */
-        
-        .custom-navbar .navbar-brand {
-            font-size: 1.5rem;
-            color: #2c3e50;
-        }
-        /* Offcanvas background with soft gradient */
-        
+
         .custom-offcanvas {
             background: linear-gradient(to bottom, #ffffff, #e7f1f9);
-            /* Calming gradient */
             padding: 1.5rem;
             border-left: 1px solid #ced4da;
         }
-        /* Buttons with modern color palette */
-        
+
         .custom-btn {
             background-color: #0dcaf0;
             color: white;
@@ -171,45 +139,57 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
         }
-        
+
         .custom-btn:hover {
             background-color: #0bb5d6;
             color: white;
         }
-        
+
         .offcanvas-end {
-            background-image: radial-gradient( black, #27548A);
+            background-image: radial-gradient(black, #27548A);
         }
-        
+
         .offcanvas-title {
             color: white;
         }
-        
+
         .social-icon {
             color: white;
             transition: transform 0.3s ease, color 0.3s ease;
         }
-        
+
         .social-icon:hover {
             transform: scale(1.2);
         }
-        /* Specific hover colors for each brand */
-        
+
         .social-icon.linkedin:hover {
             color: #0077B5;
             background-color: white;
-            /* LinkedIn blue */
         }
-        
+
         .social-icon.instagram:hover {
             background-image: linear-gradient(#833AB4, #fd1d1d, #fcb045);
-            /* Instagram pink */
         }
-        
+
         .social-icon.github:hover {
             color: #333;
             background-color: white;
-            /* GitHub dark */
+        }
+
+        @media (max-width: 768px) {
+            .overlay {
+                margin: 50px auto;
+                padding: 1rem;
+            }
+
+            .navbar h1 {
+                font-size: 1.25rem;
+            }
+
+            .form-control,
+            .form-control1 {
+                width: 90%;
+            }
         }
     </style>
 </head>
@@ -243,19 +223,16 @@
 
 
     <div class="overlay">
-
-
         <h1 class="typewriter">Get In Touch!</h1>
         <hr>
 
         <form action="https://api.web3forms.com/submit" method="POST">
-
             <input type="hidden" name="access_key" value="74136384-973c-4482-baae-b67f2ca994c5">
             <input type="text" class="form-control" placeholder="Your name" name="name" required>
             <br>
             <input type="email" class="form-control" placeholder="Your email id" name="email id" required>
             <br>
-            <textarea class="form-control1" placeholder="Your meassage" name="message" required></textarea>
+            <textarea class="form-control1" placeholder="Your message" name="message" required></textarea>
             <br>
             <br>
             <button type="submit" class="btn btn-outline-primary">Submit</button>
@@ -275,7 +252,6 @@
                     <i class="fab fa-github fa-2x"></i>
                 </a>
             </div>
-
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
