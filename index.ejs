@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parth Singh Bisen - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #000000, #1a1a1a);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background: linear-gradient(to right, #000000, #B6FFFA);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% {
+                position: 0% 50%;
+            }
+            50% {
+                position: 100% 50%;
+            }
+            100% {
+                position: 0% 50%;
+            }
+        }
+        
+        .navbar h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            background: linear-gradient(to right, #00feba, #5b5b5b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-content {
+            text-align: center;
+            padding: 100px 20px 60px;
+            background: rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        .creative {
+            color: #B6FFFA;
+            text-shadow: 0 0 10px #B6FFFA;
+            animation: slideInUp 2s ease-out;
+        }
+        
+        .light {
+            height: 3px;
+            background: linear-gradient(to right, #B6FFFA, #ffffff, #B6FFFA);
+            animation: pulse 3s infinite;
+            margin: 30px 0;
+        }
+        
+        .container {
+            animation: fadeIn 3s ease-in-out;
+        }
+        
+        .card-cover {
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+            border: none;
+        }
+        
+        .card-cover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(182, 255, 250, 0.5);
+        }
+        
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0.6;
+            }
+        }
+        /* 👇 Scroll reveal classes */
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s ease;
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+        
+        .container1 {
+            background-color: black;
+        }
+        
+        footer {
+            background-color: rgba(0, 0, 0, 0);
+            color: #B6FFFA;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+            border-top: 1px solid #2c2c2c;
+        }
+        
+        li {
+            transition: transform 0.3s ease, filter 0.3s ease, background-image 3ms;
+            cursor: pointer;
+        }
+        
+        li:hover {
+            transform: translateY(-5px) scale(2);
+            filter: brightness(150);
+        }
+        
+        .me-3 {
+            transition: transform 0.3s ease, filter 0.3s ease, background-image 3ms;
+            cursor: pointer;
+        }
+        
+        .me-3:hover {
+            color: #0dcaf0;
+            transform: translateY(-5px) scale(3);
+            filter: brightness(150);
+        }
+        
+        .hello {
+            width: 20px;
+            height: 40px;
+        }
+        
+        .custom-btn {
+            background-color: #0dcaf0;
+            color: white;
+            font-weight: 500;
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-btn:hover {
+            background-color: #0bb5d6;
+            color: white;
+        }
+        
+        .offcanvas-end {
+            background-image: radial-gradient( black, #27548A);
+        }
+        
+        .offcanvas-title {
+            color: white;
+        }
+        
+        hr {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ... NAVBAR and VIDEO remain unchanged -->
+    <nav class="navbar fixed-top">
+        <div class="container-fluid">
+            <h1>Parth Singh Bisen</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <hr>
+                <div class="offcanvas-body">
+                    <form action="/about" method="Post">
+                        <button type="submit" class="btn btn-outline-info">About</button>
+                    </form>
+                    <hr>
+                    <form action="/contact" method="Post">
+                        <button type="submit" class="btn btn-outline-info">Contact me</button>
+                    </form>
+                    <hr>
+                    <a href="/Parth Singh Bisen.pdf">
+                        <button type="submit" class="btn btn-outline-info">resume</button>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <video autoplay muted loop>
+    <source src="/3d8424ea47a4ac5f05806157654ba981.mp4" type="video/mp4">
+  </video>
+
+    <div class="hero-content">
+        <h1><span id="typed-output"></span><span class="cursor"> </span></h1>
+        <div class="col-lg-8 mx-auto">
+            <p class="fs-5 mb-4 creative" id="subtitle">a creative and detail-oriented developer...</p>
+        </div>
+    </div>
+
+
+    <div class="light reveal"></div>
+
+    <div class="container px-4 py-5 reveal" id="custom-cards">
+
+        <h2 class="pb-2 border-bottom">
+            Hey
+            <%= username %>! Check Out my Projects</h2>
+        <div class="row row-cols-1 row-cols-lg-3 g-4 py-5">
+            <!-- Project cards with .reveal class -->
+            <div class="col reveal">
+                <div class="card card-cover h-100 text-bg-dark rounded-4" style="background-image: url('/COLOURBOX52631117.webp');">
+                    <div class="d-flex flex-column h-100 p-5 pb-3">
+                        <a href="https://github.com/Parth520/qr-code-generator">
+                            <h3 class="pt-5 mt-5 mb-4 display-6 fw-bold">QR CODE GENERATOR</h3>
+                        </a>
+                        <ul class="d-flex list-unstyled mt-auto">
+                            <li class="me-auto">A QR code generator for URLS</li>
+                            <li class="d-flex align-items-center me-3"><small>role:Backend developer</small></li>
+                            <li class="d-flex align-items-center"><small>3d</small></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- More cards... -->
+            <div class="col reveal">
+                <!-- Portfolio card -->
+                <div class="col">
+                    <div class="card card-cover h-100 text-bg-dark rounded-4" style="background-image: url('/glowing-neon-line-document-folder-icon-isolated-vector-29245712.jpg');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3">
+                            <a href="/">
+                                <h3 class="pt-5 mt-5 mb-4 display-6 fw-bold">Portfolio </h3>
+                            </a>
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li class="me-auto">The one you are looking at</li>
+                                <li class="d-flex align-items-center me-3"><small>role:Full-stack developer</small></li>
+                                <li class="d-flex align-items-center"><small>4d</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col reveal">
+                <!-- Aluminicom card -->
+                <div class="col">
+                    <div class="card card-cover h-100 text-bg-dark rounded-4" style="background-image: url('/Screenshot\ 2025-05-03\ 115828.jpg');">
+                        <div class="d-flex flex-column h-100 p-5 pb-3">
+                            <a href="https://github.com/Parth520/Aluminiconn">
+                                <h3 class="pt-5 mt-5 mb-4 display-6 fw-bold">Aluminicom</h3>
+                            </a>
+                            <ul class="d-flex list-unstyled mt-auto">
+                                <li class="me-auto"> Online website for college students to connect with alumini for placement purposes</li>
+                                <li class="d-flex align-items-center me-3"><small>role:Front-end developer</small></li>
+                                <li class="d-flex align-items-center"><small>5d</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container1 px-4 py-5 reveal" id="icon-grid">
+
+        <h2 class="pb-2 border-bottom">Hey
+            <%= username %> These are my Skills</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+            <div class="col d-flex align-items-start reveal">
+                <div class="col d-flex align-items-start">
+                    <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em" aria-hidden="true">
+                            <use xlink:href="#bootstrap"></use>
+                        </svg>
+                    <div>
+                        <ul>
+                            <li class="list">Front-end development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex align-items-start reveal">
+                <div class="col d-flex align-items-start">
+                    <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em" aria-hidden="true">
+                            <use xlink:href="#cpu-fill"></use>
+                        </svg>
+                    <div>
+                        <ul>
+                            <li class="list">HTML</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repeat similar structure for other list items -->
+
+            <div class="col d-flex align-items-start reveal">
+                <div class="col d-flex align-items-start">
+                    <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em" aria-hidden="true">
+                            <use xlink:href="#calendar3"></use>
+                        </svg>
+                    <div>
+                        <ul>
+                            <li class="list">CSS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start reveal">
+                <div class="col d-flex align-items-start">
+                    <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em" aria-hidden="true">
+                            <use xlink:href="#calendar3"></use>
+                        </svg>
+                    <div>
+                        <ul>
+                            <li class="list">JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col d-flex align-items-start reveal">
+                <div class="col d-flex align-items-start">
+                    <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em" aria-hidden="true">
+                            <use xlink:href="#calendar3"></use>
+                        </svg>
+                    <div>
+                        <ul>
+                            <li class="list">Node.JS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex align-items-start reveal">
+                <div class="col d-flex align-items-start">
+                    <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em" aria-hidden="true">
+                            <use xlink:href="#calendar3"></use>
+                        </svg>
+                    <div>
+                        <ul>
+                            <li class="list">Express.JS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex align-items-start reveal">
+                <div class="col d-flex align-items-start">
+                    <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em" aria-hidden="true">
+                            <use xlink:href="#calendar3"></use>
+                        </svg>
+                    <div>
+                        <ul>
+                            <li class="list">Embedded JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex align-items-start reveal">
+                <div class="col d-flex align-items-start">
+                    <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em" aria-hidden="true">
+                            <use xlink:href="#calendar3"></use>
+                        </svg>
+                    <div>
+                        <ul>
+                            <li class="list">VFX</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex align-items-start reveal">
+                <div class="col d-flex align-items-start">
+                    <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em" aria-hidden="true">
+                            <use xlink:href="#calendar3"></use>
+                        </svg>
+                    <div>
+                        <ul>
+                            <li class="list">3D Animation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col d-flex align-items-start reveal">
+                <div class="col d-flex align-items-start">
+                    <svg class="bi text-body-secondary flex-shrink-0 me-3" width="1.75em" height="1.75em" aria-hidden="true">
+                            <use xlink:href="#calendar3"></use>
+                        </svg>
+                    <div>
+                        <ul>
+                            <li class="list">Blender</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add the rest of the items similarly -->
+
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Parth Singh Bisen. All rights reserved.</p>
+        <p>Made with ❤️</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- 👇 Intersection Observer Script -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                } else {
+                    entry.target.classList.remove('visible');
+                }
+            });
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Animate the title with bounce + fade in from bottom
+        document.addEventListener('DOMContentLoaded', function() {
+            const textToType = "Hi <%= username %>! I am Parth Singh Bisen";
+            const typedOutput = document.getElementById('typed-output');
+            const subtitle = document.getElementById('subtitle');
+            let charIndex = 0;
+
+            function typeText() {
+                if (charIndex < textToType.length) {
+                    typedOutput.textContent += textToType.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeText, 100); // Adjust typing speed here
+                } else {
+                    // Show the subtitle with a fade-in effect
+                    setTimeout(() => {
+                        subtitle.classList.add('fade-in');
+                    }, 500);
+                }
+            }
+
+            // Start typing animation
+            setTimeout(typeText, 1000); // Delay before typing starts
+        });
+    </script>
+
+</body>
+
+</html>
